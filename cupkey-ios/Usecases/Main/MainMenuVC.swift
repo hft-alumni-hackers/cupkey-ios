@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import RxSwift
 
 protocol MainMenuVCDelegate {
     func bttClaimClicked()
@@ -11,6 +12,7 @@ class MainMenuVC: UIViewController {
     let TAG = "MainMenuVC"
     var delegate: MainMenuVCDelegate?
     var items = [SBBBaseCellItem]()
+    var disposeBag = DisposeBag()
 
     fileprivate unowned var rootView: MainMenuVCView { return view as! MainMenuVCView }
 
@@ -42,12 +44,20 @@ class MainMenuVC: UIViewController {
         self.rootView.cupCollectionView.delegate = self
         self.rootView.cupCollectionView.dataSource = self
 
-        self.items.append(CupCellItem(cup: SBBCup()))
-        self.items.append(CupCellItem(cup: SBBCup()))
-        self.items.append(CupCellItem(cup: SBBCup()))
-        self.items.append(CupCellItem(cup: SBBCup()))
-
         self.rootView.cupCollectionView.reloadData()
+
+        // Load Cups from Backend
+        CupRepository
+            .getAllCups()
+            .subscribe({ newCupsEvent in
+                if let newCups = newCupsEvent.element {
+                    self.items = newCups.map {
+                        CupCellItem(cup: $0)
+                    }
+                }
+                self.rootView.cupCollectionView.reloadData()
+            })
+            .disposed(by: self.disposeBag)
     }
 
     @objc func bttClaimClicked() {

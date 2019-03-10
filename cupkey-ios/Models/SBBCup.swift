@@ -1,6 +1,16 @@
 import Foundation
 
-class SBBCup {
-    var cupId: String?
+class SBBCup: Codable {
+    var certificateHash: String?
     var claimingTimestamp: Int?
+
+    init() {
+        
+    }
+
+    init(certificateHash: String, claimingTimestamp: Int) {
+        self.certificateHash = certificateHash
+        self.claimingTimestamp = claimingTimestamp
+    }
+
 }

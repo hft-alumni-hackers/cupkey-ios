@@ -1,10 +1,13 @@
 import Foundation
+import RxSwift
 import UIKit
 
 class AppCoordinator {
 
     let rootNavigationController: UINavigationController
     var mainMenuVC: MainMenuVC?
+
+    var disposeBag = DisposeBag()
 
     init(rootNavigationController: UINavigationController) {
         self.rootNavigationController = rootNavigationController
@@ -50,6 +53,19 @@ extension AppCoordinator: QRCodeScannerVCDelegate {
         let verificationVC = CupKeyVerificationVC(
             scannedCupKeyCertificateHash: scannedContent
         )
+
+        CupRepository
+            .postCupClaim(certificateHash: scannedContent)
+            .subscribe(onNext: { postedCup in
+                // success
+                print("postclaim success", postedCup)
+            }, onError: { (error) in
+                // error
+                print(error)
+            })
+            .disposed(by: self.disposeBag)
+
+
         verificationVC.delegate = self
         self.rootNavigationController.pushViewController(verificationVC, animated: true)
         print(scannedContent)

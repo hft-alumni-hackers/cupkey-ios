@@ -7,5 +7,10 @@ target 'cupkey-ios' do
 
   # Pods for cupkey-ios
   pod 'SnapKit', '~> 4.0.0'
-
+  pod 'Alamofire', '~> 4.5.0'
+  pod 'RxAlamofire', '~> 4.0.0'
+  pod 'RxSwift',    '~> 4.0'
+  pod 'RxCocoa',    '~> 4.0'
+  pod 'SwiftDate', '~> 5.0'
+  
 end

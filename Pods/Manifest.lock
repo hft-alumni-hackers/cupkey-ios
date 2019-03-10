@@ -1,16 +1,45 @@
 PODS:
+  - Alamofire (4.5.1)
+  - RxAlamofire (4.0.0):
+    - RxAlamofire/Core (= 4.0.0)
+  - RxAlamofire/Core (4.0.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4.0)
+  - RxAtomic (4.4.1)
+  - RxCocoa (4.4.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
   - SnapKit (4.0.1)
+  - SwiftDate (5.1.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.5.0)
+  - RxAlamofire (~> 4.0.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - SnapKit (~> 4.0.0)
+  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - RxAlamofire
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
     - SnapKit
+    - SwiftDate
 
 SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  RxAlamofire: 6ea579ac53bf14cb4bc7049a3866e5a769989b1d
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: 358acd3f79ae29e06bdfc92c6602ab08b299a5f2
+PODFILE CHECKSUM: 49660ccea8c0310460704b5152eef930a11f6627
 
 COCOAPODS: 1.5.3

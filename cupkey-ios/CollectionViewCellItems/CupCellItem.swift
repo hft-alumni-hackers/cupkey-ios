@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import SwiftDate
 
 class CupCellItem: SBBBaseCellItem {
 
@@ -63,7 +64,8 @@ class CupCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:)") }
 
     func setupWithItem(item: CupCellItem) {
-
+        let relativeDateString = Date(seconds: Double(item.cup.claimingTimestamp!)).toRelative()
+        self.lblDate.text = relativeDateString
     }
 
 }
